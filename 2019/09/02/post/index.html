@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>支持es6的import/export | 破壳</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/avatar.jpg">
+    <meta name="description" content="让你难过的事情，有一天，你一定会笑着说出来">
+    
+    <link rel="preload" href="/assets/css/0.styles.c871facf.css" as="style"><link rel="preload" href="/assets/js/app.79b74a6f.js" as="script"><link rel="preload" href="/assets/js/14.11b02d40.js" as="script"><link rel="preload" href="/assets/js/1.88a8ee83.js" as="script"><link rel="preload" href="/assets/js/2.e3b1a39b.js" as="script"><link rel="preload" href="/assets/js/6.015c6c9a.js" as="script"><link rel="preload" href="/assets/js/3.ed5baecb.js" as="script"><link rel="preload" href="/assets/js/18.5587f430.js" as="script"><link rel="preload" href="/assets/js/4.22eb5973.js" as="script"><link rel="prefetch" href="/assets/js/10.5a71c439.js"><link rel="prefetch" href="/assets/js/11.330b2776.js"><link rel="prefetch" href="/assets/js/12.ca78b7b6.js"><link rel="prefetch" href="/assets/js/13.3f4786f5.js"><link rel="prefetch" href="/assets/js/15.511f7022.js"><link rel="prefetch" href="/assets/js/16.dba01845.js"><link rel="prefetch" href="/assets/js/17.e42712c1.js"><link rel="prefetch" href="/assets/js/19.463bf454.js"><link rel="prefetch" href="/assets/js/20.501e5fc0.js"><link rel="prefetch" href="/assets/js/21.c2c45dd2.js"><link rel="prefetch" href="/assets/js/22.b8425460.js"><link rel="prefetch" href="/assets/js/23.79914b37.js"><link rel="prefetch" href="/assets/js/24.21621d2c.js"><link rel="prefetch" href="/assets/js/25.2365c52f.js"><link rel="prefetch" href="/assets/js/5.b6c26c55.js"><link rel="prefetch" href="/assets/js/7.7cb36274.js"><link rel="prefetch" href="/assets/js/9.43c820bc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c871facf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="layout"><div class="hero blue-raspberry"><header class="header"><div class="content nav"><a href="/" class="logo router-link-active"><div class="logo__image"><img src="/avatar.jpg" alt="wenson-logo"></div> <div class="logo__desc"><div class="logo__desc-title">破壳</div> <div class="logo__desc-subtitle">让你难过的事情，有一天，你一定会笑着说出来</div></div></a> <nav class="nav-links"><div class="nav-links__item"><a href="/archive/" class="nav-link">
+    归档
+</a></div><div class="nav-links__item"><a href="/categories/" class="nav-link">
+    分类
+</a></div><div class="nav-links__item"><a href="/about/" class="nav-link">
+    关于
+</a></div></nav></div></header></div> <div class="container"><div class="page"><div class="page-left"></div> <div class="page-center content"><header class="page-header"><div class="page-header__nav"><button class="back-button">返回</button></div> <div class="page-header__title"><h1>支持es6的import/export</h1> <div class="tags-wrapper"><div data-v-2d540a4b><a href="/tags/node.js" class="tag" data-v-2d540a4b>node.js</a></div></div></div> <div class="page-header__meta"><span class="meta__item"><i class="iconfont"></i> <span class="article-createtime">2019-09-02 16:10:47</span></span> <span id="/2019/09/02/post/" data-flag-title="支持es6的import/export" class="leancloud_visitors meta__item"><i class="iconfont"></i> <i class="leancloud-visitors-count">loading</i></span></div></header> <br><br> <div><div class="content__default"><p>nodejs本身支持大部分的es6语法，但当前任然不支持es6的import/export，因此借助babel</p> <p>使得nodejs兼容es6的import/export语法</p> <p>没有<strong>package.json</strong>的话就先<strong>npm init</strong>，在项目根目录创建 <strong>.babelrc文件</strong></p> <blockquote><p>.babelrc</p></blockquote> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;presets&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">[</span>
+            <span class="token string">&quot;@babel/preset-env&quot;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">&quot;targets&quot;</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                    <span class="token property">&quot;node&quot;</span><span class="token operator">:</span><span class="token boolean">true</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>targets为node，能针对node环境，最小化的将不兼容代码转化为兼容代码</strong>（比如当前仅</p> <p>仅是将es6的import/export转化为commonJs的require，而不是将所有es6代码转化为es5这</p> <p>种全部转化）</p> <blockquote><p>npm install @babel/cli @babel/core @babel/node @babel/preset-env -D</p></blockquote> <p>最后通过npx执行本地的可执行程序，而<strong>不是</strong>使用 <strong>node 文件名</strong> 来执行</p> <blockquote><p>npx babel-node 文件名</p></blockquote></div> <!----></div> <div id="comments" slot="comment"></div> </div> <div class="page-right"></div></div></div> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.79b74a6f.js" defer></script><script src="/assets/js/14.11b02d40.js" defer></script><script src="/assets/js/1.88a8ee83.js" defer></script><script src="/assets/js/2.e3b1a39b.js" defer></script><script src="/assets/js/6.015c6c9a.js" defer></script><script src="/assets/js/3.ed5baecb.js" defer></script><script src="/assets/js/18.5587f430.js" defer></script><script src="/assets/js/4.22eb5973.js" defer></script>
+  </body>
+</html>
