@@ -1,0 +1,1 @@
+import{_ as e,o as t,e as a}from"./chunks/framework.CXoXy2UI.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{"articles":true},"headers":[],"relativePath":"articles.md","filePath":"articles.md"}'),r={name:"articles.md"};function s(c,o,i,n,l,p){return t(),a("div")}const m=e(r,[["render",s]]);export{d as __pageData,m as default};

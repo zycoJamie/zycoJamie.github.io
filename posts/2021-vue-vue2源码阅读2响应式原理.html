@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue2源码阅读2--响应式原理 | 哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+    <meta name="description" content="zyco's blog">
+    <meta name="generator" content="VitePress v1.4.1">
+    <link rel="preload stylesheet" href="/assets/style.Je7W7yXq.css" as="style">
+    
+    <script type="module" src="/assets/app.C-xq_dnS.js"></script>
+    <link rel="modulepreload" href="/assets/chunks/theme.CPki6E2D.js">
+    <link rel="modulepreload" href="/assets/chunks/framework.CXoXy2UI.js">
+    <link rel="modulepreload" href="/assets/posts_2021-vue-vue2源码阅读2响应式原理.md.P2Rt4iux.lean.js">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.min.js"></script>
+    <link rel="icon" href="/avatar.jpg">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><!--[--><header class="header-container" data-v-244d2a01><div class="profile" data-v-244d2a01><img class="" src="/avatar.jpg" data-v-244d2a01><div class="info" data-v-244d2a01><div class="name" data-v-244d2a01>zyco</div><div class="brief" data-v-244d2a01>front-end developer</div></div></div><div data-v-244d2a01><dl class="nav" data-v-244d2a01 data-v-0bea794b><!--[--><dd class="menu" data-v-0bea794b>Home</dd><dd class="menu" data-v-0bea794b>Articles</dd><dd class="menu" data-v-0bea794b>About</dd><!--]--></dl></div></header><!--[--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--]--><!--[--><header class="post-title" data-v-ff580e47><h1 data-v-ff580e47>vue2源码阅读2--响应式原理</h1><time datetime="2021-11-09" data-v-ff580e47>Nov 09, 2021</time><!----></header><div style="position:relative;" class="pure-doc" data-v-ff580e47><div><pre class="mermaid-container" style="visibility:hidden;">graph TD
+A[src/platforms/web/entry-runtime.js] --&gt;|export default Vue \n \n Vue来自 ./runtime/index| B(./runtime/index)
+B --&gt; C(定义了Vue.prototype.$mount方法, 该方法里面具体调用了mountComponent)
+C --&gt; D(此处的Vue来自core/index)
+D --&gt;|core/index中的Vue来自./instance/index| E(./instance/index中定义了Vue函数)
+E --&gt; Vue(new Vue, Vue构造函数里面执行了this._init)
+Vue --&gt; init(initMixin中定义了Vue.prototype._init)
+init --&gt; initState(initState)
+initState --&gt; initProps(initProps)
+initProps --&gt; initMethods(initMethods)
+initMethods --&gt; initData(initData)
+initData --&gt; |调用getData| getData(&quot;data.call(vm, vm)获取data函数中返回的对象&quot;)
+getData --&gt; observe(observe)
+observe --&gt; Observer(&quot;new Observer(value)&quot;)
+Observer --&gt; |constructor| ObserverConstructor(&quot;this.dep = new Dep()&quot;)
+ObserverConstructor --&gt; walk(walk)
+walk --&gt; |给对象的每个字段设置响应式| defineReactive(defineReactive)
+defineReactive --&gt; F(&quot;let childOb = !shallow &amp;&amp; observe(val)递归调用observe继续给子对象设置响应式&quot;)
+F --&gt; observe
+F --&gt; G(Object.defineProperty)
+G --&gt; get(劫持get)
+get --&gt; |&quot;每个字段都有实例化相应的dep \n \n 它与组件在mountComponent里实例化的Watcher \n \n 通过dep.depend(), 相互持有依赖 \n \n \n \n dep持有watcher就能在修改数据的时候更新页面 \n \n 为什么watcher还要持有dep？\n \n \n \n 因为watcher只有维护新旧dep，才能在收集依赖后 \n \n cleanupDeps \n \n 避免组件中未使用的数据修改时，导致组件更新&quot;| H(return value)
+G --&gt; set(劫持set)
+set --&gt; notify(dep.notify)
+notify --&gt; |dep依赖的每个Watcher都执行update| update(&quot;subs[i].update()&quot;)
+update --&gt; queueWatcher(queueWatcher)
+queueWatcher --&gt; nextTick(&quot;nextTick(flushSchedulerQueue)&quot;)
+nextTick --&gt; pms(&quot;p.then(flushCallbacks)通过promise.then, 在微任务中执行flushCallbacks&quot;)
+pms --&gt; |flushCallbacks中调用| flushSchedulerQueue(flushSchedulerQueue)
+flushSchedulerQueue --&gt; watcherBefore(watcher.before)
+watcherBefore --&gt; beforeUpdate1(mountComponent中, 实例化Watcher时, 定义了before)
+beforeUpdate1 --&gt; beforeUpdate2(调用钩子函数beforeUpdate)
+beforeUpdate2 --&gt; |watcher.before执行完后| watcherRun(&quot;watcher.run()&quot;)
+watcherRun --&gt; |调用watcher的get| watcherGet(&quot;this.get()&quot;)
+watcherGet --&gt; |getter来自mountComponent实例化Watcher时| watcherGet2(&quot;this.getter.call(vm, vm)&quot;)
+watcherGet2 --&gt; vmUpdate(&quot;vm._update(vnode, hydrating)完成新旧虚拟dom的比对和更新&quot;)
+vmUpdate --&gt; watcherRun
+watcherRun --&gt; callUpdatedHooks(callUpdatedHooks)
+callUpdatedHooks --&gt; callHook(&quot;callHook(vm,&#39;updated&#39;)&quot;) 
+callHook --&gt; updated(调用钩子函数updated)
+updated --&gt; End[完成响应式更新]
+</pre><script> (() =&gt; { const timer = setInterval(async () =&gt; { if (window.mermaid) { await window.mermaid.run({ querySelector: &quot;.mermaid-container&quot; }); const container = document.querySelector(&quot;.mermaid-container&quot;); if (container) { container.style.visibility = &quot;visible&quot;; } clearInterval(timer); } }, 500); })(); </script></div></div><!--]--><!--]--></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"about.md\":\"DaF1XgRa\",\"articles.md\":\"yB_dAots\",\"index.md\":\"8vJcoyBn\",\"posts_2017-android-contentprovider工作过程.md\":\"ClxvvOVM\",\"posts_2019-js-ui自定义上传图片.md\":\"SF2WFYqv\",\"posts_2019-js-原型链.md\":\"CIqESMHX\",\"posts_2019-kotlin-协程.md\":\"lLSNktW3\",\"posts_2020-react-umi中简化css模块化.md\":\"Cl94qEdG\",\"posts_2020-小程序-使用echarts绘制某个省份地图时.md\":\"01FEb9hz\",\"posts_2021-vue-vue2源码阅读1从打包命令到入口文件.md\":\"wSqZzqxc\",\"posts_2021-vue-vue2源码阅读2响应式原理.md\":\"P2Rt4iux\",\"posts_2022-css-多行文本省略号.md\":\"g7cZ1iQy\",\"posts_2022-node.js-web3项目npm安装依赖ethereumjsabi失败.md\":\"NU4ow-nW\",\"posts_2023-react-优化hook按需render.md\":\"DKw30Vso\",\"posts_2023-ts-判断泛型参数是否是any.md\":\"lYoMv3j6\",\"posts_2024-c__-vscode.include.qt.header.md\":\"B58h-cK5\",\"posts_2024-vite-vitepress开发环境下动态导入umd模块出现差异化报错.md\":\"Dtd_iXtq\",\"posts_2024-vite-vitepress站点配置导入主题配置ts文件报错.md\":\"CLZCM-6g\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"哔哩哔哩 (゜-゜)つロ 干杯~-bilibili\",\"description\":\"zyco's blog\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"avatar\":\"/avatar.jpg\",\"name\":\"zyco\",\"brief\":\"front-end developer\",\"about\":{\"brief\":\"all human wisdom is summed up in these two words, 'Wait and hope.' \",\"links\":[{\"icon\":\"/github.svg\",\"url\":\"https://github.com/zycoJamie\",\"description\":\"zycoJamie\"},{\"icon\":\"/email.svg\",\"description\":\"zycojamie@163.com\"}]},\"valine\":{\"appId\":\"QLaOpe5oJgjdVPMUh0AalLvo-gzGzoHsz\",\"appKey\":\"lQXFaBSrTVXPi9QkqnzwUVX4\"}},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":true}");</script>
+    
+  </body>
+</html>
