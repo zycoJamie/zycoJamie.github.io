@@ -6,10 +6,10 @@
     <title>vue2源码阅读2--响应式原理 | 哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
     <meta name="description" content="zyco's blog">
     <meta name="generator" content="VitePress v1.4.1">
-    <link rel="preload stylesheet" href="/assets/style.BdkALCiN.css" as="style">
+    <link rel="preload stylesheet" href="/assets/style.6rD20lF_.css" as="style">
     
-    <script type="module" src="/assets/app.CJDbD9MD.js"></script>
-    <link rel="modulepreload" href="/assets/chunks/theme.e295Umaz.js">
+    <script type="module" src="/assets/app.C4eJG7ey.js"></script>
+    <link rel="modulepreload" href="/assets/chunks/theme.DJ5jdd2A.js">
     <link rel="modulepreload" href="/assets/chunks/framework.CXoXy2UI.js">
     <link rel="modulepreload" href="/assets/posts_2021-vue-vue2源码阅读2响应式原理.md.DhoFLUL-.lean.js">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.min.js"></script>
@@ -18,7 +18,7 @@
     <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
   </head>
   <body>
-    <div id="app"><!--[--><header class="header-container" data-v-6b9f25a3><div class="profile" data-v-6b9f25a3><img class="" src="/avatar.jpg" data-v-6b9f25a3><div class="info" data-v-6b9f25a3><div class="name" data-v-6b9f25a3>zyco</div><div class="brief" data-v-6b9f25a3>front-end developer</div></div></div><div data-v-6b9f25a3><dl class="nav" data-v-6b9f25a3 data-v-792a3045><!--[--><dd class="menu" data-v-792a3045>Home</dd><dd class="menu" data-v-792a3045>Articles</dd><dd class="menu" data-v-792a3045>About</dd><!--]--></dl></div></header><!--[--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--]--><!--[--><header class="post-title" data-v-78d0518a><h1 data-v-78d0518a>vue2源码阅读2--响应式原理</h1><time datetime="2021-11-09" data-v-78d0518a>Nov 09, 2021</time><!----></header><div style="position:relative;" class="pure-doc" data-v-78d0518a><div><pre class="mermaid-container" style="visibility:hidden;">graph TD
+    <div id="app"><!--[--><header class="header-container" data-v-e9d35454><div class="profile" data-v-e9d35454><img class="" src="/avatar.jpg" data-v-e9d35454><div class="info" data-v-e9d35454><div class="name" data-v-e9d35454>zyco</div><div class="brief" data-v-e9d35454>front-end developer</div></div></div><div data-v-e9d35454><dl class="nav" data-v-e9d35454 data-v-dd6a5f2b><!--[--><dd class="menu" data-v-dd6a5f2b>Home</dd><dd class="menu" data-v-dd6a5f2b>Articles</dd><dd class="menu" data-v-dd6a5f2b>About</dd><!--]--></dl></div></header><!--[--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--]--><!--[--><header class="post-title" data-v-e511b4a1><h1 data-v-e511b4a1>vue2源码阅读2--响应式原理</h1><time datetime="2021-11-09" data-v-e511b4a1>Nov 09, 2021</time><!----></header><div style="position:relative;" class="pure-doc" data-v-e511b4a1><div><pre class="mermaid-container" style="visibility:hidden;">graph TD
 A[src/platforms/web/entry-runtime.js] --&gt;|export default Vue \n \n Vue来自 ./runtime/index| B(./runtime/index)
 B --&gt; C(定义了Vue.prototype.$mount方法, 该方法里面具体调用了mountComponent)
 C --&gt; D(此处的Vue来自core/index)

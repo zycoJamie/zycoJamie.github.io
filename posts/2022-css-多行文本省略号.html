@@ -6,10 +6,10 @@
     <title>多行文本省略号，且末尾包含&quot;展开或更多&quot; | 哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
     <meta name="description" content="zyco's blog">
     <meta name="generator" content="VitePress v1.4.1">
-    <link rel="preload stylesheet" href="/assets/style.BdkALCiN.css" as="style">
+    <link rel="preload stylesheet" href="/assets/style.6rD20lF_.css" as="style">
     
-    <script type="module" src="/assets/app.CJDbD9MD.js"></script>
-    <link rel="modulepreload" href="/assets/chunks/theme.e295Umaz.js">
+    <script type="module" src="/assets/app.C4eJG7ey.js"></script>
+    <link rel="modulepreload" href="/assets/chunks/theme.DJ5jdd2A.js">
     <link rel="modulepreload" href="/assets/chunks/framework.CXoXy2UI.js">
     <link rel="modulepreload" href="/assets/posts_2022-css-多行文本省略号.md.g7cZ1iQy.lean.js">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.min.js"></script>
@@ -18,7 +18,7 @@
     <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
   </head>
   <body>
-    <div id="app"><!--[--><header class="header-container" data-v-6b9f25a3><div class="profile" data-v-6b9f25a3><img class="" src="/avatar.jpg" data-v-6b9f25a3><div class="info" data-v-6b9f25a3><div class="name" data-v-6b9f25a3>zyco</div><div class="brief" data-v-6b9f25a3>front-end developer</div></div></div><div data-v-6b9f25a3><dl class="nav" data-v-6b9f25a3 data-v-792a3045><!--[--><dd class="menu" data-v-792a3045>Home</dd><dd class="menu" data-v-792a3045>Articles</dd><dd class="menu" data-v-792a3045>About</dd><!--]--></dl></div></header><!--[--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--]--><!--[--><header class="post-title" data-v-78d0518a><h1 data-v-78d0518a>多行文本省略号，且末尾包含&quot;展开或更多&quot;</h1><time datetime="2022-05-23" data-v-78d0518a>May 23, 2022</time><!----></header><div style="position:relative;" class="pure-doc" data-v-78d0518a><div><p>实现关键点 <br> 1 父元素-webkit-box保证内部文字多行省略 <br> 2 div中的文字环绕float元素 <br> 3 clear:both <br> 4 line-height相关的设置与计算</p><div class="language-html line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki github-light vp-code" tabindex="0"><code><span class="line"><span style="color:#24292E;">&lt;</span><span style="color:#22863A;">html</span><span style="color:#6F42C1;"> lang</span><span style="color:#24292E;">=</span><span style="color:#032F62;">&quot;en&quot;</span><span style="color:#24292E;">&gt;</span></span>
+    <div id="app"><!--[--><header class="header-container" data-v-e9d35454><div class="profile" data-v-e9d35454><img class="" src="/avatar.jpg" data-v-e9d35454><div class="info" data-v-e9d35454><div class="name" data-v-e9d35454>zyco</div><div class="brief" data-v-e9d35454>front-end developer</div></div></div><div data-v-e9d35454><dl class="nav" data-v-e9d35454 data-v-dd6a5f2b><!--[--><dd class="menu" data-v-dd6a5f2b>Home</dd><dd class="menu" data-v-dd6a5f2b>Articles</dd><dd class="menu" data-v-dd6a5f2b>About</dd><!--]--></dl></div></header><!--[--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--]--><!--[--><header class="post-title" data-v-e511b4a1><h1 data-v-e511b4a1>多行文本省略号，且末尾包含&quot;展开或更多&quot;</h1><time datetime="2022-05-23" data-v-e511b4a1>May 23, 2022</time><!----></header><div style="position:relative;" class="pure-doc" data-v-e511b4a1><div><p>实现关键点 <br> 1 父元素-webkit-box保证内部文字多行省略 <br> 2 div中的文字环绕float元素 <br> 3 clear:both <br> 4 line-height相关的设置与计算</p><div class="language-html line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki github-light vp-code" tabindex="0"><code><span class="line"><span style="color:#24292E;">&lt;</span><span style="color:#22863A;">html</span><span style="color:#6F42C1;"> lang</span><span style="color:#24292E;">=</span><span style="color:#032F62;">&quot;en&quot;</span><span style="color:#24292E;">&gt;</span></span>
 <span class="line"><span style="color:#24292E;">  &lt;</span><span style="color:#22863A;">head</span><span style="color:#24292E;">&gt;</span></span>
 <span class="line"><span style="color:#24292E;">    &lt;</span><span style="color:#22863A;">style</span><span style="color:#24292E;">&gt;</span></span>
 <span class="line"><span style="color:#6F42C1;">      .test</span><span style="color:#24292E;"> {</span></span>

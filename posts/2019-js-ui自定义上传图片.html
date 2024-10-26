@@ -6,10 +6,10 @@
     <title>element-ui自定义上传图片 | 哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
     <meta name="description" content="zyco's blog">
     <meta name="generator" content="VitePress v1.4.1">
-    <link rel="preload stylesheet" href="/assets/style.BdkALCiN.css" as="style">
+    <link rel="preload stylesheet" href="/assets/style.6rD20lF_.css" as="style">
     
-    <script type="module" src="/assets/app.CJDbD9MD.js"></script>
-    <link rel="modulepreload" href="/assets/chunks/theme.e295Umaz.js">
+    <script type="module" src="/assets/app.C4eJG7ey.js"></script>
+    <link rel="modulepreload" href="/assets/chunks/theme.DJ5jdd2A.js">
     <link rel="modulepreload" href="/assets/chunks/framework.CXoXy2UI.js">
     <link rel="modulepreload" href="/assets/posts_2019-js-ui自定义上传图片.md.SF2WFYqv.lean.js">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.min.js"></script>
@@ -18,7 +18,7 @@
     <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
   </head>
   <body>
-    <div id="app"><!--[--><header class="header-container" data-v-6b9f25a3><div class="profile" data-v-6b9f25a3><img class="" src="/avatar.jpg" data-v-6b9f25a3><div class="info" data-v-6b9f25a3><div class="name" data-v-6b9f25a3>zyco</div><div class="brief" data-v-6b9f25a3>front-end developer</div></div></div><div data-v-6b9f25a3><dl class="nav" data-v-6b9f25a3 data-v-792a3045><!--[--><dd class="menu" data-v-792a3045>Home</dd><dd class="menu" data-v-792a3045>Articles</dd><dd class="menu" data-v-792a3045>About</dd><!--]--></dl></div></header><!--[--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--]--><!--[--><header class="post-title" data-v-78d0518a><h1 data-v-78d0518a>element-ui自定义上传图片</h1><time datetime="2019-05-28" data-v-78d0518a>May 28, 2019</time><!----></header><div style="position:relative;" class="pure-doc" data-v-78d0518a><div><blockquote><p>利用el-upload的http-request属性实现自定义上传逻辑，下面的上传是把图片转换成字节数组</p></blockquote><div class="language-js line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki github-light vp-code" tabindex="0"><code><span class="line"><span style="color:#6F42C1;">_reqUpload</span><span style="color:#24292E;">(data) {</span></span>
+    <div id="app"><!--[--><header class="header-container" data-v-e9d35454><div class="profile" data-v-e9d35454><img class="" src="/avatar.jpg" data-v-e9d35454><div class="info" data-v-e9d35454><div class="name" data-v-e9d35454>zyco</div><div class="brief" data-v-e9d35454>front-end developer</div></div></div><div data-v-e9d35454><dl class="nav" data-v-e9d35454 data-v-dd6a5f2b><!--[--><dd class="menu" data-v-dd6a5f2b>Home</dd><dd class="menu" data-v-dd6a5f2b>Articles</dd><dd class="menu" data-v-dd6a5f2b>About</dd><!--]--></dl></div></header><!--[--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--[--><!----><!--]--><!--]--><!--[--><header class="post-title" data-v-e511b4a1><h1 data-v-e511b4a1>element-ui自定义上传图片</h1><time datetime="2019-05-28" data-v-e511b4a1>May 28, 2019</time><!----></header><div style="position:relative;" class="pure-doc" data-v-e511b4a1><div><blockquote><p>利用el-upload的http-request属性实现自定义上传逻辑，下面的上传是把图片转换成字节数组</p></blockquote><div class="language-js line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki github-light vp-code" tabindex="0"><code><span class="line"><span style="color:#6F42C1;">_reqUpload</span><span style="color:#24292E;">(data) {</span></span>
 <span class="line"><span style="color:#D73A49;">      let</span><span style="color:#24292E;"> _this </span><span style="color:#D73A49;">=</span><span style="color:#005CC5;"> this</span></span>
 <span class="line"><span style="color:#D73A49;">      let</span><span style="color:#24292E;"> reader </span><span style="color:#D73A49;">=</span><span style="color:#D73A49;"> new</span><span style="color:#6F42C1;"> FileReader</span><span style="color:#24292E;">()</span></span>
 <span class="line"><span style="color:#24292E;">      reader.</span><span style="color:#6F42C1;">readAsArrayBuffer</span><span style="color:#24292E;">(data.file)</span></span>
